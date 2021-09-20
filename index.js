@@ -1,6 +1,6 @@
 import {Personagem}  from "./classe.js"
 
-
+//criando os players
 const player = new Personagem('hugo','ogro','katana')
 const inimigo = new Personagem('victor','elfo','katana')
 console.log(player,inimigo)
@@ -28,4 +28,16 @@ if(player.vida <= 0){
     morto = inimigo
     vivo = player
 }
-console.log("(morreu " + morto.nome + ")-<->-(" +  vivo.nome + " ficou vivo)")
+console.log("(morreu " + morto.nome + ")-<-\n>-(" +  vivo.nome + " ficou vivo)")
+
+
+    const body = document.querySelector('body')
+
+    const h2 = document.createElement('h2')
+    h2.innerHTML = player.nome
+    const div2 = document.createElement('div')
+    div2.appendChild(h2) //colocar no ultimo elemento da div
+
+    body.appendChild(div2) //adicionar divs
+
+  
