@@ -1,46 +1,85 @@
-function criarPersonagem (nome = "",raca){
-    var selecionado = racas[raca]
-    if(selecionado == undefined) throw "erro"
-
-    this.vida = selecionado.vidaMax
-    this.nome = nome
-    this.raca = selecionado
-
-    this.lutar = function lutar (inimigo){
-        const playerForca = this.raca.forca
-        const inimigoForca = inimigo.raca.forca
-    
-        inimigo.vida -= playerForca
+class Personagem{
+    constructor (nome = "",raca,arma){
+        var armaSelecionada = armas[arma]
+        var racaSelecionada = racas[raca]
         
-        return `${inimigo.nome} recebeu ${playerForca} de dano`
+        if(racaSelecionada == undefined) throw "erro"
+    
+        this.vida = racaSelecionada.vidaMax
+        this.nome = nome
+        this.raca = racaSelecionada
+        this.arma = armaSelecionada
+    } 
+
+    lutar (inimigo){
+        var danoArma = this.arma.dano + (this.arma.dano * this.raca[this.arma.escala] / 100)
+        var dano = this.raca.forca + danoArma
+        inimigo.vida -= dano
+        
+        return `${inimigo.nome} recebeu ${dano} de dano, sua vida é = ${inimigo.vida}`
+    
     }
 }
-
 
 //raças dos bonecos
 var racas = {
     humano : {
-        vidaMax : 100,
+        vidaMax : 1000,
         forca:20,
-        agilidade:40,
+        destreza:40,
         inteligencia:30
     },
     elfo : {
-        vidaMax : 100,
+        vidaMax : 1000,
         forca:10,
-        agilidade:60,
+        destreza:60,
         inteligencia:50
     },
     ogro : {
-        vidaMax : 100,
-        forca:60,
-        agilidade:40,
+        vidaMax : 1000,
+        forca:50,
+        destreza:40,
         inteligencia:30
     }
 }
+//armas
+var armas = {
+katana : {
+    nome: 'Katana',
+    dano:100,
+    escala: 'destreza'
+},
+machado : {
+    nome: 'Machado de duas mãos',
+    dano:50,
+    escala: 'forca'
+}}
 
-const player = new criarPersonagem('hugo','ogro')
-const inimigo = new criarPersonagem('victor','elfo')
+const player = new Personagem('hugo','ogro','katana')
+const inimigo = new Personagem('victor','elfo','katana')
 console.log(player,inimigo)
 
-console.log(inimigo.lutar(player))
+var vidas = player.vida > 0 && inimigo.vida > 0
+
+while(vidas){
+    console.log(inimigo.lutar(player))
+    if(player.vida <= 0){
+        break
+    }
+    console.log(player.lutar(inimigo))   
+    if(inimigo.vida <= 0){
+        break
+    } 
+    vidas = player.vida > 0 && inimigo.vida > 0
+}
+var morto = ""
+var vivo = ""
+
+if(player.vida <= 0){
+    morto = player;
+    vivo = inimigo
+}else {
+    morto = inimigo
+    vivo = player
+}
+console.log("(morreu " + morto.nome + ")-<->-(" +  vivo.nome + " ficou vivo)")
