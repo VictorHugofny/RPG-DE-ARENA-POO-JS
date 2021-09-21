@@ -30,14 +30,4 @@ if(player.vida <= 0){
 }
 console.log("(morreu " + morto.nome + ")-<-\n>-(" +  vivo.nome + " ficou vivo)")
 
-
-    const body = document.querySelector('body')
-
-    const h2 = document.createElement('h2')
-    h2.innerHTML = player.nome
-    const div2 = document.createElement('div')
-    div2.appendChild(h2) //colocar no ultimo elemento da div
-
-    body.appendChild(div2) //adicionar divs
-
   
