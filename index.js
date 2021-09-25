@@ -1,9 +1,18 @@
 import {Personagem}  from "./classe.js"
 
-//criando os players
-const player = new Personagem('hugo','ogro','katana')
-const inimigo = new Personagem('victor','elfo','katana')
-console.log(player,inimigo)
+function novoElemento (tagName, classname){ //criar elemento com tag e definir sua classe
+    const elem = document.createElement(tagName)
+    elem.className = classname;
+    return elem
+}
+function criandopersonagem (nome,classe,arma){ //criando os players
+    const player = new Personagem(nome,classe,arma)
+    const inimigo = new Personagem(nome,classe,arma)
+    document.querySelector('div').console.log()
+
+}
+
+
 
 var vidas = player.vida > 0 && inimigo.vida > 0
 
@@ -30,4 +39,3 @@ if(player.vida <= 0){
 }
 console.log("(morreu " + morto.nome + ")-<-\n>-(" +  vivo.nome + " ficou vivo)")
 
-  

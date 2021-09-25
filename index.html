@@ -4,14 +4,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Document</title>
+    <title>RPG OBJETO</title>
 </head>
-<h1>PAGINA EM DESENVOLVIMENTO</h1>
-<H2>POR ENQUANTO FUNCIONANDO APENAS A PARTE LOGICA EM JAVASCRIPT</H2>
+<div class = "personagem">
+    <h1>ESCOLHER PERSONAGEM</h1>
+    <img id = "homem" src="./img/almain_male.png" width="250">
+    <img id = "elfo" src="./img/elfo.png" width="300">
+    <img id = "ogro" src="./img/ogro.png" width="300">
+    <h1>Seu nome <input type="text" name="nome" width="1000">
+    <button formaction="http://localhost:3003/usuarios">Enviar</button> </h1>
+</div>
+
+<div class = "lutar">
+    <h1>ESCOLHER PERSONAGEM</h1>
+    <img src="img/arena.jpg" width="500">
+</div>
 <body>
     
 </body>
+
+<style>
+    body{
+        background-color: rgb(0, 0, 0);
+    }
+    button{
+        width: 100px;
+        height: 40px;
+        font-size: 20px;
+        color: rgb(174, 255, 248);
+        background-color: rgb(0, 0, 0);
+    }
+    input{
+        width: 550px;
+        height: 25px;
+        margin-bottom: 20px;
+    }
+    h1{
+        background-color: rgb(57, 77, 109);
+        color: rgb(255, 255, 255);
+        border: rgba(0, 0, 0, 0.363) solid 5px;
+        font-size: 35px;
+
+    }
+    .personagem{
+        background-color: rgb(73, 121, 167);
+        border: rgb(160, 255, 250) solid 10px;
+        margin: 20px;
+        padding: 20px;
+    }
+    .personagem :hover {
+        background-color: rgb(98, 119, 238);
+    }
+    .personagem img{
+        padding-left: 80px;
+    }
+</style>
 
 <script src ='./index.js' type="module"> </script>
 <script src ='./classe.js' type="module"> </script>

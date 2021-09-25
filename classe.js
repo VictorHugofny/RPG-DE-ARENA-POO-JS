@@ -20,6 +20,9 @@ export class Personagem{
     
     }
 }
+
+
+console.log(novoElemento('div','teste'))
 //raças dos bonecos
 var racas = {
     humano : {
