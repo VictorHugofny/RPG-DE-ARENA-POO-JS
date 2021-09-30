@@ -6,26 +6,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RPG OBJETO</title>
 </head>
+
+<body>
+
 <div class = "personagem">
-    <h1>ESCOLHER PERSONAGEM</h1>
-    <img id = "homem" src="./img/almain_male.png" width="250">
-    <img id = "elfo" src="./img/elfo.png" width="300">
-    <img id = "ogro" src="./img/ogro.png" width="300">
-    <h1>Seu nome <input type="text" name="nome" width="1000">
-    <button formaction="http://localhost:3003/usuarios">Enviar</button> </h1>
+    <h1>RPG DE ARENA</h1>
+    <img id = "homem" src="./img/almain_male.png" width="125">
+    <img id = "elfo" src="./img/elfo.png" width="150">
+    <img id = "ogro" src="./img/ogro.png" width="150">
+
+    <section >
+        <br>
+        <form id="my-form">
+          <div>
+            <label for="name"><h2>Nome:</h2> </label>
+            <input type="text" id="name" />
+          </div>
+          <div>
+            <h2>Raça:</h2>
+            <select id = "raca">
+                <option value="Humano">Humano</option>
+                <option value="Elfo">Elfo</option>
+                <option value="Ogro">Ogro</option>
+                <br>
+            </select>
+          </div>
+          <div>
+            <h2>Arma:</h2>
+            <select id = "arma">
+                <option value="Katana">Katana</option>
+                <option value="Machado">Machado</option>
+                <br>
+            </select>
+          </div>
+          <br>
+          <input id="submit-button" class="btn" type="submit" value="Começar" />
+        </form>
+    </div>
+<div class = "selecionado"></div>
+
+<div class = "personagem">
+
+    <section >
+        <br>
+        <form id="my-form">
+          <div class="msg"></div>
+          <br>
+          <input id="combat-button" class="btn" type="submit" value="Lutar" />
+        </form>
+    </div>
+
+
+
+
+    
 </div>
 
-<div class = "lutar">
-    <h1>ESCOLHER PERSONAGEM</h1>
-    <img src="img/arena.jpg" width="500">
-</div>
-<body>
-    
+
 </body>
 
 <style>
+
     body{
-        background-color: rgb(0, 0, 0);
+        background-color: rgb(0, 65, 187);
+        margin: 0;
+        padding: 0;
     }
     button{
         width: 100px;
@@ -46,22 +91,26 @@
         font-size: 35px;
 
     }
+    h2{
+        background-color: rgba(0, 58, 112, 0.322);
+        color: rgb(255, 255, 255);
+        font-size: 25px;
+    }
     .personagem{
         background-color: rgb(73, 121, 167);
         border: rgb(160, 255, 250) solid 10px;
         margin: 20px;
         padding: 20px;
     }
-    .personagem :hover {
-        background-color: rgb(98, 119, 238);
-    }
     .personagem img{
         padding-left: 80px;
     }
+    .personagem .selecionado {
+        background: brown;
+    }
 </style>
 
-<script src ='./index.js' type="module"> </script>
-<script src ='./classe.js' type="module"> </script>
+<script src ='./index.js'> </script>
 
 
 </html>
