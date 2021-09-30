@@ -37,6 +37,7 @@ var racas = [
     {
         nome: 'Humano',
         vidaMax : 1000,
+        foto: 'img/humano.png',
         forca:20,
         destreza:40,
         inteligencia:30
@@ -44,12 +45,14 @@ var racas = [
      {
         nome: 'Elfo',
         vidaMax : 1000,
+        foto: 'img/elfo.png',
         forca:10,
         destreza:60,
         inteligencia:50
     },
     {
         nome: 'Ogro',
+        foto: 'img/ogro.png',
         vidaMax : 1000,
         forca:80,
         destreza:40,
@@ -82,11 +85,12 @@ function criandopersonagem (nome,classe,arma){ //criando os players
 
 }
 
-
+const divpersonagem = document.querySelector('.personagem')
 const PersonagemElement = document.querySelectorAll('.personagem img') 
 const nameInput = document.querySelector('#name')
 const racaInput = document.querySelector('#raca')
 const armaInput = document.querySelector('#arma')
+const displaypersonagem = document.querySelector('#display-foto')
 
 const sutmitbottom = document.querySelector('#submit-button')
 const combatbottom = document.querySelector('#combat-button')
@@ -114,14 +118,17 @@ sutmitbottom.addEventListener('click',(e) => {
         
         return
     }
+    divpersonagem.remove()
     
 
 
 
     const hugo = new Personagem(nameValue, racaValue, armaValue)
     const inimigo = new Personagem('inimigo', 'Ogro', 'Machado')
-    
 
+    displaypersonagem.src = hugo.raca.foto
+    
+    
     statusmsg.innerHTML = `<h3> Nome:</h3> <h4>${nameValue}</h4> <h3>Raça:</h3> <h4>${racaValue}</h4> <h3>Arma equipada:</h3> <h4>${armaValue}</h4> <h3>Vida:</h3> <h4>${hugo.vida}</h4> `
     inimigomsg.innerHTML = `<h3> Nome:</h3> <h4>${inimigo.nome}</h4> <h3>Vida:</h3> <h4>${inimigo.vida}</h4> `
 
