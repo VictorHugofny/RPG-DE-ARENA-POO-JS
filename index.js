@@ -20,6 +20,7 @@ class Personagem{
         return `${inimigo.nome} recebeu ${dano} de dano, sua vida é = ${inimigo.vida}`
     
     }
+    
 }
 
 
@@ -112,6 +113,8 @@ const sutmitbottom = document.querySelector('#submit-button')
 const combatbottom = document.querySelector('#combat-button')
 
 const combatmsg = document.querySelector('.msg')
+const statusmsg = document.querySelector('.status')
+const inimigomsg = document.querySelector('.inimigo')
 
 console.log(nameInput)
 console.log(sutmitbottom)
@@ -140,22 +143,24 @@ sutmitbottom.addEventListener('click',(e) => {
         
         return
     }
+    
 
-    console.log(nameValue)
-    console.log(racaValue)
-    console.log(armaValue)
+
 
     const hugo = new Personagem(nameValue, racaValue, armaValue)
     const inimigo = new Personagem('inimigo', 'Ogro', 'Machado')
     alert('personagem criado')
 
+    statusmsg.innerHTML = `<h3> Nome:</h3> <h4>${nameValue}</h4> <h3>Raça:</h3> <h4>${racaValue}</h4> <h3>Arma equipada:</h3> <h4>${armaValue}</h4> <h3>Vida:</h3> <h4>${hugo.vida}</h4> `
+    inimigomsg.innerHTML = `<h3> Nome:</h3> <h4>${inimigo.nome}</h4> <h3>Vida:</h3> <h4>${inimigo.vida}</h4> `
     combatbottom.addEventListener('click',(e) => {
         e.preventDefault()
         console.log(hugo.lutar(inimigo))
 
-        combatmsg.style.color = "white";
-        combatmsg.textContent = hugo.lutar(inimigo)
+    
+        combatmsg.innerHTML = `<h5>${hugo.lutar(inimigo)}</h5>`
         combatmsg.classList = 'error' //adicionando uma classe
+        inimigomsg.innerHTML = `<h3> Nome:</h3> <h4>${inimigo.nome}</h4> <h3>Vida:</h3> <h4>${inimigo.vida}</h4> `
         
     })
 })
