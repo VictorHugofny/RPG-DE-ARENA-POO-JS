@@ -17,10 +17,17 @@ class Personagem{
         var dano = this.raca.forca + danoArma
         inimigo.vida -= dano
         
-        return `${inimigo.nome} recebeu ${dano} de dano, sua vida é = ${inimigo.vida}`
-    
+        if(inimigo.vida <= 0){
+            return "inimigo morto"
+        }
+
+        return `${inimigo.nome} recebeu ${dano} de dano`
+
     }
-    
+    usarcura(){
+        return this.vida += 50
+    }
+
 }
 
 
@@ -44,7 +51,7 @@ var racas = [
     {
         nome: 'Ogro',
         vidaMax : 1000,
-        forca:50,
+        forca:80,
         destreza:40,
         inteligencia:30
     }
@@ -75,56 +82,20 @@ function criandopersonagem (nome,classe,arma){ //criando os players
 
 }
 
-/* var vidas = player.vida > 0 && inimigo.vida > 0
-
-while(vidas){
-    console.log(inimigo.lutar(player))
-    if(player.vida <= 0){
-        break
-    }
-    console.log(player.lutar(inimigo))   
-    if(inimigo.vida <= 0){
-        break
-    } 
-    vidas = player.vida > 0 && inimigo.vida > 0
-}
-var morto = ""
-var vivo = ""
-
-if(player.vida <= 0){
-    morto = player;
-    vivo = inimigo
-}else {
-    morto = inimigo
-    vivo = player
-}
-console.log("(morreu " + morto.nome + ")-<-\n>-(" +  vivo.nome + " ficou vivo)")
- */
 
 const PersonagemElement = document.querySelectorAll('.personagem img') 
 const nameInput = document.querySelector('#name')
 const racaInput = document.querySelector('#raca')
 const armaInput = document.querySelector('#arma')
 
-const seletor = document.querySelector('.personagem')
-const selecionar = seletor.querySelector('.selecionado')
-
 const sutmitbottom = document.querySelector('#submit-button')
 const combatbottom = document.querySelector('#combat-button')
+const curamsg = document.querySelector('#cura-button')
 
 const combatmsg = document.querySelector('.msg')
+const combatmsg1 = document.querySelector('.msg1')
 const statusmsg = document.querySelector('.status')
 const inimigomsg = document.querySelector('.inimigo')
-
-console.log(nameInput)
-console.log(sutmitbottom)
-console.log(armaInput)
-
-console.log(racaInput)
-
-
-console.log(PersonagemElement)
-
 
 
 sutmitbottom.addEventListener('click',(e) => {
@@ -149,19 +120,32 @@ sutmitbottom.addEventListener('click',(e) => {
 
     const hugo = new Personagem(nameValue, racaValue, armaValue)
     const inimigo = new Personagem('inimigo', 'Ogro', 'Machado')
-    alert('personagem criado')
+    
 
     statusmsg.innerHTML = `<h3> Nome:</h3> <h4>${nameValue}</h4> <h3>Raça:</h3> <h4>${racaValue}</h4> <h3>Arma equipada:</h3> <h4>${armaValue}</h4> <h3>Vida:</h3> <h4>${hugo.vida}</h4> `
     inimigomsg.innerHTML = `<h3> Nome:</h3> <h4>${inimigo.nome}</h4> <h3>Vida:</h3> <h4>${inimigo.vida}</h4> `
+
     combatbottom.addEventListener('click',(e) => {
         e.preventDefault()
-        console.log(hugo.lutar(inimigo))
-
-    
-        combatmsg.innerHTML = `<h5>${hugo.lutar(inimigo)}</h5>`
+        
+        if(inimigo.vida >= 0){
+            combatmsg.innerHTML = `<h5>${hugo.lutar(inimigo)}</h5>`
+            combatmsg1.innerHTML = `<h5>${inimigo.lutar(hugo)}</h5>`
+        } else {
+            combatmsg.innerHTML = '<h4>GANHOU FIM DE JOGO</h4>'
+            combatmsg1.innerHTML = `<a>https://victorhugofny.github.io/</a>`
+        } 
+        
         combatmsg.classList = 'error' //adicionando uma classe
+
+        statusmsg.innerHTML = `<h3> Nome:</h3> <h4>${nameValue}</h4> <h3>Raça:</h3> <h4>${racaValue}</h4> <h3>Arma equipada:</h3> <h4>${armaValue}</h4> <h3>Vida:</h3> <h4>${hugo.vida}</h4> `
         inimigomsg.innerHTML = `<h3> Nome:</h3> <h4>${inimigo.nome}</h4> <h3>Vida:</h3> <h4>${inimigo.vida}</h4> `
         
     })
-})
+    curamsg.addEventListener('click',(e) => {
+        e.preventDefault()
+        curamsg.innerHTML = `<h5>${hugo.usarcura()}</h5>`
+        console.log(hugo.usarcura())
+        statusmsg.innerHTML = `<h3> Nome:</h3> <h4>${nameValue}</h4> <h3>Raça:</h3> <h4>${racaValue}</h4> <h3>Arma equipada:</h3> <h4>${armaValue}</h4> <h3>Vida:</h3> <h4>${hugo.vida}</h4> `
+})})
     

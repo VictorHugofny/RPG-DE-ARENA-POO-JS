@@ -54,10 +54,11 @@
         <div class="status"></div>
         <div class="inimigo"></div></div>
          <div class="msg"></div>
+         <div class="msg1"></div>
          
           <br>
           <input id="combat-button" class="btn" type="submit" value="Bater" />
-          <input id="combat-button" class="btn" type="submit" value="Usar cura" />
+          <input id="cura-button" class="btn" type="submit" value="Usar cura" />
         </form>
     </div>
 
@@ -73,6 +74,7 @@
 <style>
 
     .players{
+        padding-top: 0;
         display: flex;
         justify-content: space-evenly;
     }
@@ -91,13 +93,14 @@
     input{
         width: 550px;
         height: 25px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
     h1{
-        background-color: rgb(57, 77, 109);
+        background-color: rgb(29, 44, 68);
         color: rgb(255, 255, 255);
         border: rgba(0, 0, 0, 0.363) solid 5px;
         font-size: 35px;
+        margin: 0;
 
     }
     h2{
@@ -107,15 +110,13 @@
     }
     .personagem{
         background-color: rgb(73, 121, 167);
-        border: rgb(160, 255, 250) solid 10px;
-        margin: 20px;
-        padding: 20px;
+        border: rgb(160, 255, 250) solid 5px;
+        margin: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
     .personagem img{
-        padding-left: 80px;
-    }
-    .personagem .selecionado {
-        background: brown;
+        padding-left: 0px;
     }
     h3{
         color: azure;
@@ -125,7 +126,7 @@
     }
     h5{
         font-size: 20px;
-        color: blanchedalmond;
+        color: rgb(250, 96, 96);
     }
 </style>
 
