@@ -82,7 +82,6 @@ function criandopersonagem (nome,classe,arma){ //criando os players
     const player = new Personagem(nome,classe,arma)
     const inimigo = new Personagem(nome,classe,arma)
     document.querySelector('div').console.log()
-
 }
 
 const divpersonagem = document.querySelector('.personagem')
